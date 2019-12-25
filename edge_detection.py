@@ -9,7 +9,7 @@ lower = np.array([0, 48, 80], dtype = "uint8")
 upper = np.array([20, 255, 255], dtype = "uint8")
 
 
-image = cv2.imread('D:/dev/project-snow-white/edge detection/kalatest.png')
+image = cv2.imread('H:/edge-detection/kalatest.png')
 face_locations = []
 
 height, width, channels = image.shape
@@ -75,11 +75,13 @@ cv2.drawContours(gray , c, -1, (255,255,255), 2)
 
 print(len(conts))
 
+edges_filtered = edges_filtered[0:height//2, 0:width]
+
 # Stacking the images to print them together for comparison
-images = np.hstack((gray, edges_filtered))
+#images = np.hstack((gray, edges_filtered))
 
 # Display the resulting frame
-cv2.imshow('Frame', images)
+cv2.imshow('Frame', edges_filtered)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
