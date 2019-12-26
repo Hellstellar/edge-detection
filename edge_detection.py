@@ -4,6 +4,9 @@ import face_recognition
 import numpy as np
 import argparse
 import random as rng
+import sys
+
+np.set_printoptions(threshold=sys.maxsize)
 
 lower = np.array([0, 48, 80], dtype = "uint8")
 upper = np.array([20, 255, 255], dtype = "uint8")
@@ -54,6 +57,7 @@ skinMask = cv2.inRange(converted, lower, upper)
 # mask to the frame
 skinMask = cv2.GaussianBlur(skinMask, (3, 3), 0)
 skin = cv2.bitwise_and(image, image, mask = skinMask)
+
 
 final = cv2.subtract(image, skin)
 
